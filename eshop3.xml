@@ -133,6 +133,7 @@ can_order := true</label>
 		<transition>
 			<source ref="id5"/>
 			<target ref="id2"/>
+			<label kind="guard" x="-272" y="17">storage == 0 &amp;&amp; making &gt; 0</label>
 		</transition>
 		<transition>
 			<source ref="id5"/>
@@ -290,6 +291,18 @@ system product, customer, shop, factory;</system>
 		</query>
 		<query>
 			<formula>product.Available --&gt; (product.On_the_way || product.Out_of_stock || product.Available || product.Discontinued)
+			</formula>
+			<comment>
+			</comment>
+		</query>
+		<query>
+			<formula>A[] storage &gt;= 0
+			</formula>
+			<comment>
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; storage &gt; 10
 			</formula>
 			<comment>
 			</comment>
