@@ -191,11 +191,11 @@ order := 1</label>
 	<template>
 		<name>Shop</name>
 		<declaration>clock clk;</declaration>
-		<location id="id10" x="-34" y="-365">
-			<name x="-44" y="-399">Cancelled</name>
+		<location id="id10" x="-323" y="-382">
+			<name x="-333" y="-416">Cancelled</name>
 		</location>
-		<location id="id11" x="51" y="-212">
-			<name x="41" y="-246">Delivered</name>
+		<location id="id11" x="-331" y="-8">
+			<name x="-341" y="-42">Delivered</name>
 		</location>
 		<location id="id12" x="-153" y="-212">
 			<name x="-163" y="-246">Shipped</name>
@@ -207,32 +207,29 @@ order := 1</label>
 		<transition>
 			<source ref="id11"/>
 			<target ref="id13"/>
-			<label kind="assignment" x="-432" y="-127">clk := 0</label>
-			<nail x="51" y="-127"/>
-			<nail x="-501" y="-127"/>
+			<label kind="assignment" x="-467" y="-110">clk := 0</label>
 		</transition>
 		<transition>
 			<source ref="id10"/>
 			<target ref="id13"/>
-			<label kind="assignment" x="-492" y="-365">clk := 0</label>
-			<nail x="-501" y="-365"/>
+			<label kind="assignment" x="-459" y="-331">clk := 0</label>
 		</transition>
 		<transition>
 			<source ref="id12"/>
 			<target ref="id10"/>
-			<label kind="synchronisation" x="-135" y="-305">cancelled?</label>
-			<label kind="assignment" x="-135" y="-288">storage := storage + order</label>
+			<label kind="synchronisation" x="-246" y="-340">cancelled?</label>
+			<label kind="assignment" x="-229" y="-323">storage := storage + order</label>
 		</transition>
 		<transition>
 			<source ref="id12"/>
 			<target ref="id11"/>
-			<label kind="guard" x="-93" y="-246">clk &gt; 2</label>
-			<label kind="synchronisation" x="-93" y="-229">delivered!</label>
+			<label kind="guard" x="-238" y="-102">clk &gt; 2</label>
+			<label kind="synchronisation" x="-255" y="-85">delivered!</label>
 		</transition>
 		<transition>
 			<source ref="id13"/>
 			<target ref="id12"/>
-			<label kind="guard" x="-450" y="-255">order &lt;= storage</label>
+			<label kind="guard" x="-450" y="-255">order &lt;= storage &amp;&amp; order &gt; 0</label>
 			<label kind="assignment" x="-450" y="-238">storage := storage - order</label>
 		</transition>
 	</template>
